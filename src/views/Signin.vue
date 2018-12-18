@@ -5,7 +5,7 @@
         <span>ログイン</span>
       </div>
       <div class="hint">ダミーのログイン情報: ID/PW clupanod@drovi.tk/clupanod@drovi.tk</div>
-      <form class="Signin__Form" @submit.prevent="signin">
+      <form class="Signin__Form" @submit.prevent="signin" name="signin">
         <FormBlock label="メールアドレス">
           <Input v-model="email" placeholder="clupanod@drovi.tk" />
         </FormBlock>
@@ -29,6 +29,7 @@ import Button, {
   Size as ButtonSize,
 } from '@/components/Base/Button.vue';
 import { Rootstate } from '@/store';
+
 export default Vue.extend({
   components: {
     Button,
@@ -76,7 +77,7 @@ export default Vue.extend({
         const user = await firebase
           .auth()
           .signInWithEmailAndPassword(this.email, this.password);
-        if (!user.user.emailVerified) {
+        if (!user.user!.emailVerified) {
           alert('メール認証が完了していません。受信箱を確認してください。');
           firebase.auth().signOut();
         } else {
