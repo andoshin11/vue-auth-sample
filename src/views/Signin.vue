@@ -7,10 +7,10 @@
       <div class="hint">ダミーのログイン情報: ID/PW clupanod@drovi.tk/clupanod@drovi.tk</div>
       <form class="Signin__Form" @submit.prevent="signin" name="signin">
         <FormBlock label="メールアドレス">
-          <Input v-model="email" placeholder="clupanod@drovi.tk" />
+          <Input v-model="email" placeholder="clupanod@drovi.tk" name="email" />
         </FormBlock>
         <FormBlock label="パスワード">
-          <Input v-model="password" type="password" />
+          <Input v-model="password" type="password" name="password" />
         </FormBlock>
         <Button text="ログイン" nativeType="submit" :type="ButtonType.Primary" :disabled="!verified" :loading="loading" />
       </form>
